@@ -27,6 +27,12 @@ cp .env.example .env
 yarn dev
 ```
 
+## Running with Docker Componse
+
+```bash
+docker-compose up
+```
+
 ## Running in Production
 
 ```bash

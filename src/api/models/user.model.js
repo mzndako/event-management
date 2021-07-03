@@ -64,7 +64,7 @@ UserModel.init({
   modelName: 'User',
 });
 
-sequelize.sync({ alter: true });
+sequelize.sync();
 
 /**
  * Add your
@@ -81,7 +81,7 @@ UserModel.beforeSave(async (user) => {
 
   // Convert the username to lowercase as postgres is case sensitive by default
   if (user.changed('username')) {
-    // eslint-disable-next-line
+    // eslint-disable-next-line no-param-reassign
     user.username = String(user.username).toLocaleLowerCase();
   }
 });

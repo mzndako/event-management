@@ -132,7 +132,7 @@ EventModel.createEvent = async (content, userId) => {
  * Update an existing record
  * @param {*} eventId The event Id to edit
  * @param {*} userId The current logged-in user Id
- * @param {*} content Event content to update
+ * @param {*} content Event details to update
  */
 EventModel.patchEvent = async (eventId, userId, content) => {
   await EventModel.update(
