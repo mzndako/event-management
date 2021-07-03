@@ -1,0 +1,32 @@
+version: "3.7"
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - events-db:/var/lib/postgresql/data
+
+  events:
+    build:
+      context: .
+      target: dev
+    command: npm run dev
+    environment:
+      DB_SCHEMA: postgres
+      PORT: 3000
+      JWT_SECRET: bA2aSUFsNB2qN5yymUBSs6es3qHoFpGkec75RCseBb8cpKauGefw5qy4
+      JWT_EXPIRATION_MINUTES: 60
+      SERVER_ADDRESS: http://localhost
+      DB_HOST: postgres
+      DB_NAME: postgres
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+    depends_on:
+      - postgres
+    ports:
+      - '3000:3000'
+        
+volumes:
+  events-db:
